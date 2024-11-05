@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Xtrct.AI Tasks</title>
+  <meta charset="UTF-8">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Login State -->
+    <div id="loginContainer">
+      <h2>Xtrct.AI Tasks</h2>
+      <button id="googleSignIn" class="btn btn-primary">Sign in with Google</button>
+    </div>
+
+    <!-- Tasks State -->
+    <div id="tasksContainer" style="display: none;">
+      <div class="header">
+        <h2>My Tasks</h2>
+        <button id="addTask" class="btn btn-icon">+</button>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="searchTasks" placeholder="Search tasks...">
+      </div>
+
+      <div id="tasksList" class="tasks-list"></div>
+
+      <div class="add-task-form" id="addTaskForm" style="display: none;">
+        <input type="text" id="newTaskTitle" placeholder="Task title">
+        <input type="number" id="newTaskDuration" placeholder="Duration (minutes)">
+        <button id="submitTask" class="btn btn-primary">Add Task</button>
+        <button id="cancelAdd" class="btn btn-secondary">Cancel</button>
+      </div>
+
+      <div class="footer">
+        <button id="signOut" class="btn btn-text">Sign Out</button>
+      </div>
+    </div>
+  </div>
+  <script src="firebase-config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

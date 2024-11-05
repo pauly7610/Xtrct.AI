@@ -25,6 +25,7 @@
     "starter-kit"
   ],
   "dependencies": {
+<<<<<<< HEAD
     "@invertase/react-native-apple-authentication": "^2.4.0",
     "@react-native-firebase/app": "^21.3.0",
     "@react-native-firebase/firestore": "^21.3.0",
@@ -35,5 +36,9 @@
     "kleur": "^4.1.4",
     "prompts": "^2.4.1",
     "react-native-document-picker": "^9.3.1"
+=======
+    "kleur": "^4.1.4",
+    "prompts": "^2.4.1"
+>>>>>>> 3cb5db22cc7f10e6398158e3a95a6322511ac58c
   }
 }

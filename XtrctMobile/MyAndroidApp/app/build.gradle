@@ -1,0 +1,77 @@
+apply plugin: "com.android.application"
+apply plugin: "com.facebook.react"
+
+/**
+ * This is the configuration block for the React Native app
+ */
+react {
+    // Whether to enable Hermes
+    enableHermes = true
+}
+
+android {
+    namespace "com.xtract.mobile"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.xtract.mobile"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../my-release-key.jks")
+            storePassword "XnM3G-9u"
+            keyAlias "my-key-alias"
+            keyPassword "XnM3G-9u"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Added for React Native
+    packagingOptions {
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+    }
+}
+
+dependencies {
+    // React Native dependencies
+    implementation "com.facebook.react:react-android"
+    implementation "com.facebook.react:hermes-android"
+    
+    // AndroidX dependencies
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    // Base Android dependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.microsoft.identity:common:3.6.7'
+    // Add any additional dependencies your app needs below
+    // For example:
+    // implementation "androidx.core:core-ktx:1.9.0"
+}
+
+// Run this once to be able to run the application with BUCK
+// puts all compile dependencies into folder libs for BUCK to use
+task copyDownloadableDepsToLibs(type: Copy) {
+    from configurations.implementation
+    into 'libs'
+}
+
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

@@ -5,5 +5,5 @@
         "src/*": ["src/*"]
       }
     },
-    "include": ["src"]
+    "include": ["src", "XtrctBackend/src/services/services", "XtrctBackend/src/models/task.js", "XtrctBackend/src/config/config"]
   }
